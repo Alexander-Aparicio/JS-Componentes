@@ -1,0 +1,68 @@
+*{margin: 0; padding: 0;}
+html{box-sizing: border-box; scroll-behavior: smooth; font-size: 10px;}
+*, *::after, *::before{box-sizing: inherit; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+button,input,select{border-style: none; outline: inherit;}
+button,select,input[type="submit"]{cursor: pointer;}
+button{padding: 4px 7px;}
+a{text-decoration: none;}
+p{margin:0.85em 0}
+/* ::-webkit-scrollbar {
+    display: none;
+} */
+/* OWN-STYLE */
+:root{
+    /* Colors */
+    --bgPrimary :#387780;
+    --bgArticle :#453E40;
+    --bgBody :#f8f9fa;
+    --bgCta:#F11E3C;
+    --bgForm:#ffff;
+    --cTitleBanner:#f4f4f4;
+    --clink:#FCD51B;
+    --clinkM:#FCD51B;
+    --ctextDark:#282828;
+    --ctextLight:#ebebeb;
+    /* fuentes */
+    --tNormal : 'Open Sans', sans-serif;
+    --tCursive: 'Special Elite', cursive;
+    --tTitle: 'Nunito', sans-serif;
+    --tAd: 'Anton', sans-serif;
+    --tBranding: 'Caesar Dressing', cursive;
+    /* max-min-width-window */
+    --maxWidth:1600px;
+    --minWidth:250px;
+    /* img-banner */
+    --banner: url('../img/banner.jpg');
+    /* font-size */
+    --fsHeader: 1.6rem;
+    --fsNormal: 1.6rem;
+    --fsTitle: 3rem;
+    --fsAd:4rem;
+    --fsTitleM: 2.6rem;
+    --fsAdM:3.2rem;
+    /* button */
+   --fsBtn:2.5rem;
+   /* Paddings */
+   --pgArticle: 10% 7%; 
+}
+/* Default values of html elements */
+body{background: var(--bgBody); max-width:var(--maxWidth); margin: auto;}
+article{background: var(--bgArticle);padding: var(--pgArticle);}
+p{font-size: var(--fsNormal);}
+/* Style for class */
+.h1,.h2,.h3{font-family: var(--tTitle); font-size: var(--fsTitle);}
+.linkN{color: var(--clink);}
+.linkM{color: var(--clinkM);}
+.ad{font-size: var(--fsAd);}
+.imgW{width: 100%; height: auto;}
+.imgH{height: 100%; width: auto;}
+.grid{display: grid; justify-content: center;}
+.flex{display: flex; flex-wrap: wrap;}
+.fixedTop{position:fixed;top:0; left: 0; right: 0;}
+.sticky{position: sticky;}
+.fixed{position: fixed;}
+.pRelative{position: relative;}
+.pAbsolute{position: absolute;}
+.w100{width: 100%;}
+
+
