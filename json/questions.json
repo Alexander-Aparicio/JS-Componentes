@@ -1,0 +1,26 @@
+{
+    "tema":"Historia",
+    "autor":"Alexander Meza",
+    "preguntas":[
+        {
+            "id":"1",
+            "pregunta":"¿Cómo te llamas?"
+        },
+        {
+            "id":"2",
+            "pregunta":"¿Cómo es tu apellido?"
+        },
+        {
+            "id":"3",
+            "pregunta":"¿De que país eres?"
+        },
+        {
+            "id":"4",
+            "pregunta":"¿Donde vives?"
+        },
+        {
+            "id":"5",
+            "pregunta":"¿Tienes mascotas?"
+        }
+    ]
+}

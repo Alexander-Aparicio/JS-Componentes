@@ -3,24 +3,25 @@ html{box-sizing: border-box; scroll-behavior: smooth; font-size: 10px;}
 *, *::after, *::before{box-sizing: inherit; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
 button,input,select{border-style: none; outline: inherit;}
 button,select,input[type="submit"]{cursor: pointer;}
-button{padding: 4px 7px;}
+button{padding: 5px 8px;}
 a{text-decoration: none;}
 p{margin:0.85em 0}
+li{list-style: none;}
 /* ::-webkit-scrollbar {
     display: none;
 } */
 /* OWN-STYLE */
 :root{
     /* Colors */
-    --bgPrimary :#387780;
-    --bgArticle :#453E40;
-    --bgBody :#f8f9fa;
+    --bgPrimary :#FCD51B;
+    --bgArticle :#867b7e49;
+    --bgBody :#000;
     --bgCta:#F11E3C;
     --bgForm:#ffff;
-    --cTitleBanner:#f4f4f4;
+    --cTitle:#f4f4f4;
     --clink:#FCD51B;
     --clinkM:#FCD51B;
-    --ctextDark:#282828;
+    --ctext:#f4f4f4;
     --ctextLight:#ebebeb;
     /* fuentes */
     --tNormal : 'Open Sans', sans-serif;
@@ -35,7 +36,7 @@ p{margin:0.85em 0}
     --banner: url('../img/banner.jpg');
     /* font-size */
     --fsHeader: 1.6rem;
-    --fsNormal: 1.6rem;
+    --fsNormal: 1.8rem;
     --fsTitle: 3rem;
     --fsAd:4rem;
     --fsTitleM: 2.6rem;
@@ -43,26 +44,113 @@ p{margin:0.85em 0}
     /* button */
    --fsBtn:2.5rem;
    /* Paddings */
-   --pgArticle: 10% 7%; 
+   --pgArticle: 3% 2%; 
 }
 /* Default values of html elements */
 body{background: var(--bgBody); max-width:var(--maxWidth); margin: auto;}
 article{background: var(--bgArticle);padding: var(--pgArticle);}
 p{font-size: var(--fsNormal);}
 /* Style for class */
-.h1,.h2,.h3{font-family: var(--tTitle); font-size: var(--fsTitle);}
+.h1,.h2,.h3{font-family: var(--tTitle); font-size: var(--fsTitle);color: var(--cTitle);}
+.p{color: var(--ctext);}
 .linkN{color: var(--clink);}
 .linkM{color: var(--clinkM);}
-.ad{font-size: var(--fsAd);}
+.ad{font-size: var(--fsAd); font-family: var(--tAd);}
 .imgW{width: 100%; height: auto;}
 .imgH{height: 100%; width: auto;}
+.card{display: flex; flex-wrap: wrap;flex-direction: column;justify-content: center;}
+.figc{width: 100%;display: flex;justify-content: center;align-items: center;}
 .grid{display: grid; justify-content: center;}
 .flex{display: flex; flex-wrap: wrap;}
 .fixedTop{position:fixed;top:0; left: 0; right: 0;}
 .sticky{position: sticky;}
 .fixed{position: fixed;}
 .pRelative{position: relative;}
-.pAbsolute{position: absolute;}
+.pAbsolute{position: absolute;} 
 .w100{width: 100%;}
+.branding{font-family: var(--tBranding);color: var(--bgPrimary);}
+.box-shadow{-webkit-box-shadow: 0 4px 8px 0 rgba(246, 246, 246, 0.555), 0 6px 20px 0 rgba(226, 215, 215, 0.19);box-shadow: 0 4px 8px 0 rgba(219, 217, 217, 0.39), 0 6px 20px 0 rgba(219, 214, 214, 0.377);}
+.headerG,.mainG,.footerG{padding:0% 2%}
+.inlineBlock{display: inline-block;}
+.none{display: none;}
+/* STYLE-GENERALES */
+.mainG{
+    grid-template-columns: 100%;
+    grid-row-gap:30px;
+    justify-content: center;
+    padding-top: 20px;
+}
+.mainG article{
+    width: 100%;
+    border-radius: 10px;
+}
+/* COMPONENT N°1 */
+.componentOne{
+    width: 100%;
+    grid-template-areas: 
+    "titleComponentOne titleComponentOne"
+    "descriptionComponentOne descriptionComponentOne"
+    "containerData containerScore";
+}
+.titleComponentOne{
+    grid-area: titleComponentOne;
+}
+.descriptionComponentOne{
+    grid-area: descriptionComponentOne;
+}
+.containerData{
+    grid-area: containerData;
 
-
+}
+.menuComponentOne{
+    align-items: center; 
+}
+.chronometer{
+    margin-left: 50px;
+    color: var(--ctext);
+}
+.containerScore{
+    grid-area: containerScore;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.score{
+    margin: 0.2em;
+    color:var(--ctext);
+    font-size: var(--fsTitle);
+}
+.options{
+    margin-top: 50px;
+    color: var(--ctext);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px,300px));
+    gap:2rem;
+    font-size: var(--fsNormal);
+}
+/* Style-Loading */
+.lds-dual-ring {
+    /* display: inline-block; */
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

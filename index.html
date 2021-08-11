@@ -7,9 +7,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caesar+Dressing&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&family=Special+Elite&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
     <title>Componentes</title>
 </head>
 <body>
-    
+    <header class="scticky w100 flex box-shadow headerG">
+        <p class="branding">Mis componentes</p>
+    </header>
+    <main class="mainG grid">
+
+        <article class="componentOne grid">
+            <h2 class="h2 titleComponentOne">Pregunta - Respuesta</h2>
+            <p class="p descriptionComponentOne">Responde marcando la alternativa correcta y obtén un puntaje de conocimiento sobre 100 puntos.</p>
+            <section class="containerData">
+                <div class="menuComponentOne flex">
+                    <button class="btnPlayComponentOne" id="btnPlayComponentOne">Empezar</button>
+                    <button class="btnOverComponentOne none" id="btnOverComponentOne">Rendirse</button>
+                    <div class="chronometer"><p id="time">25 seg</p></div>
+                </div>
+                <h3 class="h3 question" id="question">¿Cómo te llamas?</h3>
+                <ul class="options" id="options">
+                    <li>Alex</li>
+                    <li>Maycol</li>
+                    <li>Jeyson</li>
+                </ul>
+                <div class="lds-dual-ring none" id="loaderComponentOne"></div>
+            </section>
+            <div class="containerScore flex">
+                <p class="score" id="score">10</p>
+                <p class="score">Puntos</p>
+            </div>
+        </article>
+
+        <article class="componentTwo">
+            <h2 class="h2">Componente N°2</h2>
+        </article>
+        <article class="componentThree">
+            <h2 class="h2">Componente N°3</h2>
+        </article>
+        <article class="componentFour">
+            <h2 class="h2">Componente N°4</h2>
+        </article>
+    </main>
+    <footer class="w100 footerG">
+        <p class="p">Alexander Aparicio</p>
+    </footer>
+    <script src="js/index.js" type="module"></script>
 </body>
 </html>
