@@ -10,6 +10,7 @@ const ComponentOne = ()=>{
         fragment = d.createDocumentFragment()
         
     let loaderState = 'Inactive'
+    let randomNumberArray = []
     let questions = []
     const activeLoader = ()=>{
         $loader.classList.remove('none')
@@ -21,56 +22,62 @@ const ComponentOne = ()=>{
         $loader.classList.add('none')
         loaderState = 'Full Load'
     }
+    const arrayOfDistinctRandomNumbers = (arrayLength,maxValue)=>{
+
+        if( (arrayLength-1) <= maxValue){
+
+            do {
+
+                let randomNumber = Math.floor(Math.random()*(maxValue+1))
+                let condition = (el)=>{return el == randomNumber}
+                let validNumber = !randomNumberArray.some(condition)
+
+                if(validNumber){
+                    randomNumberArray.push(randomNumber)    
+                }
+                    
+            }
+            while (randomNumberArray.length < arrayLength)
+
+            console.log(`Arreglo con "${randomNumberArray.length}" valores`)
+            console.log(`Arreglo aleatorio solicitado : ${randomNumberArray}`) 
+
+        }else{
+            console.log('arrayLength cannot be greater than maxValue')
+        }
+             
+    }
     const getQuestions = (url)=>{
         fetch(url).then((res)=>{
             console.log(res)
-            return res.ok ? res.json() : Promise.reject(res)
+            return res.ok ? res.json() : Promise.reject(error)
         })
         .then((res)=>{
             console.log(res)
             let answers = res.preguntas
+            console.log(answers)
             answers.forEach(el => {
-                questions.push(el)
-            });
+                questions.push(el.pregunta)
+            })
+            let tematica = res.tema
+            d.getElementById('theme').textContent = tematica
         })
         .catch((error)=>{
             console.log(error)
         })
     }
-    // const RenderQuestions = (arrayData)=>{
-
-    //     let arrayIds = []; // Arreglo para llenar
-    //     let totalQuestions = 5; // Cantidad de números en el arreglo
-    //     let maxId = 5; // Máximo valor de los números en el arreglo
-        
-    //     function getArrayRandom (array){
-    //         let number = Math.floor(Math.random()*maxId);
-    //         // some : al menos un elemento cumpla con la condición su valor será true
-    //         if(!array.some(function(e){return e == number})){
-    //             /** 
-    //              * Si no se encuentra el valor aleatorio en el arreglo
-    //              * se pushea el valor.
-    //              */ 
-    //              array.push(number);
-    //         }
-    //     }
-
-    //     while(arrayIds.length < totalQuestions && totalQuestions < maxId){
-    //         getArrayRandom(arrayIds);
-    //         console.log(arrayIds)
-    //     }
-
-    //     console.log(arrayIds)
-    // }
     
+
     // Primer event
-    d.addEventListener('click', (e)=>{
+    d.addEventListener('click', async(e)=>{
         e.preventDefault()
         if(e.target === $btnPlay){
             activeLoader()
             console.log(`Despues del event click el valor del estado respuesta es: ${loaderState}`)
             $btnOver.classList.remove('none')
             $btnPlay.classList.add('none')
+            arrayOfDistinctRandomNumbers(5,5)
+            console.log(randomNumberArray)
             
             setTimeout(() => {
                 inactiveLoader()
@@ -78,10 +85,21 @@ const ComponentOne = ()=>{
                     console.log(`El valor del estado de la respuesta final es: ${loaderState}`)
                     loaderState = 'Inactive'
                     getQuestions("http://127.0.0.1:5500/json/questions.json")
-                    console.log(questions)
-                    // RenderQuestions(questions)
+                    
                 }
             }, 1000);
+            setTimeout(() => {
+                console.log(questions)
+                const renderAnswer = ()=>{
+                    let answerId = randomNumberArray[0]
+                    console.log(answerId)
+                    let answerObject = questions[answerId]
+                    console.log(answerObject)
+                }
+                renderAnswer()
+            }, 3000);
+            
+
 
         }
         if(e.target === $btnOver){

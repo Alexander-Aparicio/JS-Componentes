@@ -3,23 +3,23 @@
     "autor":"Alexander Meza",
     "preguntas":[
         {
-            "id":"1",
+            "id":"0",
             "pregunta":"¿Cómo te llamas?"
         },
         {
-            "id":"2",
+            "id":"1",
             "pregunta":"¿Cómo es tu apellido?"
         },
         {
-            "id":"3",
+            "id":"2",
             "pregunta":"¿De que país eres?"
         },
         {
-            "id":"4",
+            "id":"3",
             "pregunta":"¿Donde vives?"
         },
         {
-            "id":"5",
+            "id":"4",
             "pregunta":"¿Tienes mascotas?"
         }
     ]

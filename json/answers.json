@@ -3,7 +3,7 @@
     "autor":"Alexander Meza",
     "respuestas":[
         {
-            "id":"1",
+            "id":"0",
             "opciones":[
                 {
                     "option":"Alexander",
@@ -20,7 +20,7 @@
             ]
         },
         {
-            "id":"2",
+            "id":"1",
             "opciones":[
                 {
                     "option":"Lamas",
@@ -37,7 +37,7 @@
             ]
         },
         {
-            "id":"3",
+            "id":"2",
             "opciones":[
                 {
                     "option":"Argentina",
@@ -54,7 +54,7 @@
             ]
         },
         {
-            "id":"4",
+            "id":"3",
             "opciones":[
                 {
                     "option":"Lima",
@@ -71,7 +71,7 @@
             ]
         },
         {
-            "id":"5",
+            "id":"4",
             "opciones":[
                 {
                     "option":"5 mascotas",
