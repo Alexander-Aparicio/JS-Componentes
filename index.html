@@ -21,25 +21,32 @@
             <p class="p descriptionComponentOne">Responde marcando la alternativa correcta y obtén un puntaje de conocimiento sobre 100 puntos.</p>
             <section class="containerData">
                 <div class="menuComponentOne flex">
-                    <button class="btnPlayComponentOne" id="btnPlayComponentOne">Empezar</button>
-                    <button class="btnOverComponentOne none" id="btnOverComponentOne">Rendirse</button>
-                    <div class="chronometer"><p id="time">25 seg</p></div>
+                    <button class="btnPlayComponentOne" id="btnPlayComponentOne">Quiero jugar</button>
+                    <button class="btnOverComponentOne none" id="btnOverComponentOne">Salir</button>
                     <div class="chronometer"><p id="theme"></p></div>
+                    <div class="chronometer"><p id="time">25 seg</p></div>
+                    <div class="w100 flex recordComponentOne none" id="recordComponentOne">
+                        <input class="inputsComponentOne" type="text" name="player" id="player" placeholder="Nick">
+                        <input class="inputsComponentOne" type="email" name="email" id="email" placeholder="Correo">
+                        <button id="loginComponentOne">Empezar</button>
+                    </div>  
                 </div>
-                <h3 class="h3 question" id="question">¿Cómo te llamas?</h3>
+                <h3 class="h3 question" id="question"></h3>
                 <ul class="options" id="options">
-                    <li>Alex</li>
-                    <li>Maycol</li>
-                    <li>Jeyson</li>
+                    <li id="op1"></li>
+                    <li id="op2"></li>
+                    <li id="op3"></li>
                 </ul>
                 <div class="lds-dual-ring none" id="loaderComponentOne"></div>
             </section>
             <div class="containerScore flex">
+                <p class="playerName" id="playerName"></p>
                 <p class="score" id="score">10</p>
                 <p class="score">Puntos</p>
             </div>
-        </article>
 
+        </article>
+        
         <article class="componentTwo">
             <h2 class="h2">Componente N°2</h2>
         </article>

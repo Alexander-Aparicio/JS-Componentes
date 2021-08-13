@@ -2,8 +2,7 @@
 html{box-sizing: border-box; scroll-behavior: smooth; font-size: 10px;}
 *, *::after, *::before{box-sizing: inherit; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
 button,input,select{border-style: none; outline: inherit;}
-button,select,input[type="submit"]{cursor: pointer;}
-button{padding: 5px 8px;}
+button,select,input[type="submit"]{cursor: pointer; padding: 5px 8px;}
 a{text-decoration: none;}
 p{margin:0.85em 0}
 li{list-style: none;}
@@ -73,6 +72,12 @@ p{font-size: var(--fsNormal);}
 .headerG,.mainG,.footerG{padding:0% 2%}
 .inlineBlock{display: inline-block;}
 .none{display: none;}
+.transition{animation: open-opacity 0.5s ease-out;}
+/* ANIMATIONS */
+@keyframes open-opacity{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
 /* STYLE-GENERALES */
 .mainG{
     grid-template-columns: 100%;
@@ -109,11 +114,22 @@ p{font-size: var(--fsNormal);}
     margin-left: 50px;
     color: var(--ctext);
 }
+.recordComponentOne{
+    justify-content:space-between;
+}
+.inputsComponentOne{
+    border-radius: 4px;
+    padding: 5px;
+}
 .containerScore{
     grid-area: containerScore;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.playerName{
+    color: var(--ctext);
+    font-size: var(--fsTitle);
 }
 .score{
     margin: 0.2em;
@@ -121,12 +137,21 @@ p{font-size: var(--fsNormal);}
     font-size: var(--fsTitle);
 }
 .options{
-    margin-top: 50px;
+    margin-top: 30px;
     color: var(--ctext);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px,300px));
     gap:2rem;
     font-size: var(--fsNormal);
+}
+.options li{
+    cursor: pointer;
+    padding: 3px 10px;
+    border-radius: 7px;
+    border: solid 0.7px var(--bgArticle);
+}
+.options li:hover{
+    background: var(--bgArticle);
 }
 /* Style-Loading */
 .lds-dual-ring {

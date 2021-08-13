@@ -7,15 +7,18 @@
             "opciones":[
                 {
                     "option":"Alexander",
-                    "rpta":"true"
+                    "rpta":"true",
+                    "id":"op1"
                 },
                 {
                     "option":"Maycol",
-                    "rpta":"false"
+                    "rpta":"false",
+                    "id":"op2"
                 },
                 {
                     "option":"Jeyson",
-                    "rpta":"false"
+                    "rpta":"false",
+                    "id":"op3"
                 }
             ]
         },
@@ -24,15 +27,18 @@
             "opciones":[
                 {
                     "option":"Lamas",
-                    "rpta":"false"
+                    "rpta":"false",
+                    "id":"op1"
                 },
                 {
                     "option":"Meza",
-                    "rpta":"true"
+                    "rpta":"true",
+                    "id":"op2"
                 },
                 {
                     "option":"Novoa",
-                    "rpta":"false"
+                    "rpta":"false",
+                    "id":"op3"
                 }
             ]
         },
@@ -41,15 +47,18 @@
             "opciones":[
                 {
                     "option":"Argentina",
-                    "rpta":"false"
+                    "rpta":"false",
+                    "id":"op1"
                 },
                 {
                     "option":"Chile",
-                    "rpta":"false"
+                    "rpta":"false",
+                    "id":"op2"
                 },
                 {
                     "option":"Perú",
-                    "rpta":"true"
+                    "rpta":"true",
+                    "id":"op3"
                 }
             ]
         },
@@ -58,15 +67,18 @@
             "opciones":[
                 {
                     "option":"Lima",
-                    "rpta":"true"
+                    "rpta":"true",
+                    "id":"op1"
                 },
                 {
                     "option":"Ica",
-                    "rpta":"false"
+                    "rpta":"false",
+                    "id":"op2"
                 },
                 {
                     "option":"Tumbes",
-                    "rpta":"false"
+                    "rpta":"false",
+                    "id":"op3"
                 }
             ]
         },
@@ -75,15 +87,18 @@
             "opciones":[
                 {
                     "option":"5 mascotas",
-                    "rpta":"false"
+                    "rpta":"false",
+                    "id":"op1"
                 },
                 {
                     "option":"3 mascotas",
-                    "rpta":"true"
+                    "rpta":"true",
+                    "id":"op2"
                 },
                 {
                     "option":"1 mascota",
-                    "rpta":"false"
+                    "rpta":"false",
+                    "id":"op3"
                 }
             ]
         }
