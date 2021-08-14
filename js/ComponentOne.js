@@ -203,6 +203,9 @@ const ComponentOne = ()=>{
     const hideElement = (element)=>{
         element.classList.add('none')
     }
+    const clarifyElement = (element)=>{
+        element.classList.remove('none')
+    }
     const gameOver = ()=>{
         $question.textContent = "¡Terminaste! 🎉"
         while($options.hasChildNodes()){
@@ -231,15 +234,40 @@ const ComponentOne = ()=>{
 
         }, 1000);
     }
+    const animationElement = (element,classAnimation)=>{
+        element.classList.add(classAnimation)
+    }
+    const autoNext = ()=>{
+        
+        setInterval(()=>{
+
+            if(i<randomNumberArray.length){
+                i = i+1
+                activeLoader()
+                setTimeout(() => {
+                    inactiveLoader()
+                    enableContainers($option1,$option2,$option3,$question)
+                    renderQuestions(randomNumberArray,questions,i)
+                    renderAnswer(randomNumberArray,options,i)
+                    crono()
+                }, 500)
+            }
+            if(i>=randomNumberArray.length){
+                activeLoader()
+                gameOver()
+                inactiveLoader()
+            }
+        },5000)
+    }
     // Primer event
     d.addEventListener('click', async (e)=>{
         e.preventDefault()
         if(e.target === $btnPlay){
 
-            $btnOver.classList.remove('none')
-            $btnPlay.classList.add('none')
-            $recordPlayer.classList.remove('none')
-            $record.classList.add('transition')
+            clarifyElement($btnOver)
+            hideElement($btnPlay)
+            clarifyElement($recordPlayer)
+            animationElement($record,'transition')
         }
 
         if(e.target === $btnRecord){
@@ -254,8 +282,8 @@ const ComponentOne = ()=>{
             renderQuestions(randomNumberArray,questions,i)
             renderAnswer(randomNumberArray,options,i)
             renderPlayer()
+            autoNext()
             loaderState = 'Load'
-
         }
         if(e.target === $option1||e.target === $op1){
             disableOptions($option2,$option3)
