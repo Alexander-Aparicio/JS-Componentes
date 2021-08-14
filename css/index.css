@@ -146,9 +146,10 @@ p{font-size: var(--fsNormal);}
 }
 .options li{
     cursor: pointer;
-    padding: 3px 10px;
+    padding: 0px 10px;
     border-radius: 7px;
     border: solid 0.7px var(--bgArticle);
+    justify-content: space-around;
 }
 .options li:hover{
     background: var(--bgArticle);
