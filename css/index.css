@@ -116,6 +116,7 @@ p{font-size: var(--fsNormal);}
 }
 .recordComponentOne{
     justify-content:space-between;
+    margin-top: 20px;
 }
 .inputsComponentOne{
     border-radius: 4px;
