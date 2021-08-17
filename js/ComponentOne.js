@@ -3,9 +3,9 @@ const ComponentOne = ()=>{
     const $theme = d.getElementById('theme'),
         $question = d.getElementById('question'),
         $options = d.getElementById('options'),
-        $op1 = d.getElementById('op1'),
-        $op2 = d.getElementById('op2'),
-        $op3 = d.getElementById('op3'),
+        $resOp1 = d.getElementById('resop1'),
+        $resOp2 = d.getElementById('resop2'),
+        $resOp3 = d.getElementById('resop3'),
         $time = d.getElementById('time'),
         $recordPlayer = d.getElementById('recordComponentOne'),
         $score = d.getElementById('score'),
@@ -19,10 +19,8 @@ const ComponentOne = ()=>{
         $playerName = d.getElementById('playerName'),
         $option1 = d.getElementById('liop1'),
         $option2 = d.getElementById('liop2'),
-        $option3 = d.getElementById('liop3'),
-        fragment = d.createDocumentFragment()
+        $option3 = d.getElementById('liop3')
          
-    let loaderState = 'Full Load'
     let randomNumberArray = []
     let questions = []
     let options = []
@@ -37,13 +35,14 @@ const ComponentOne = ()=>{
         $option2.classList.add('none')
         $option3.classList.add('none')
         $question.classList.add('none')
-
-        loaderState = 'Loading...'
     }
-    const inactiveLoader = ()=>{
-        $loader.classList.remove('inlineBlock')
-        $loader.classList.add('none')
-        loaderState = 'Full Load'
+    const inactiveLoader = (time)=>{
+        setTimeout(()=>{
+            $loader.classList.remove('inlineBlock')
+            $loader.classList.add('none')
+            enableContainers($option1,$option2,$option3,$question)
+        },`${time}000`)
+
     }
     const arrayOfDistinctRandomNumbers = (arrayRandom,arrayLength,maxValue)=>{
 
@@ -70,7 +69,6 @@ const ComponentOne = ()=>{
         }
              
     }
-
     const arrayRandomPromise = (arrayRandom,arrayLength,maxValue)=>{
 
         return new Promise((resolve, reject) =>{
@@ -85,6 +83,12 @@ const ComponentOne = ()=>{
             }, 1000); 
         })
     }  
+    const enableContainers = (answer1,answer2,answer3,question)=>{
+        if(answer1.classList.contains('none')){answer1.classList.remove('none')}
+        if(answer2.classList.contains('none')){answer2.classList.remove('none')}
+        if(answer3.classList.contains('none')){answer3.classList.remove('none')}
+        if(question.classList.contains('none')){question.classList.remove('none')}
+    }
     const getQuestions = (url,array)=>{
 
         return (
@@ -107,15 +111,6 @@ const ComponentOne = ()=>{
         })
         )
     }
-    const renderQuestions = (arrayRandom,arrayQuestions,i)=>{
-        if(i< arrayRandom.length){
-            let answerId = arrayRandom[i]
-
-            function condition(el){return parseInt(el.id)  === answerId}
-            const questionObject = arrayQuestions.find(condition)
-            $question.textContent = questionObject.pregunta 
-        }
-    } 
     const getOptions = (url,array)=>{
 
         return (
@@ -136,6 +131,18 @@ const ComponentOne = ()=>{
         })
         )
     }
+    const renderPlayer = ()=>{
+        $playerName.textContent = $player.value
+    }
+    const renderQuestions = (arrayRandom,arrayQuestions,i)=>{
+        if(i< arrayRandom.length){
+            let answerId = arrayRandom[i]
+
+            function condition(el){return parseInt(el.id)  === answerId}
+            const questionObject = arrayQuestions.find(condition)
+            $question.textContent = questionObject.pregunta 
+        }
+    } 
     const renderAnswer = (arrayRandom,arrayOptions,i)=>{
         if(i< arrayRandom.length){
             let answerId = arrayRandom[i]
@@ -149,16 +156,30 @@ const ComponentOne = ()=>{
             });
         }
     } 
-    const enableContainers = (answer1,answer2,answer3,question)=>{
-        if(answer1.classList.contains('none')){answer1.classList.remove('none')}
-        if(answer2.classList.contains('none')){answer2.classList.remove('none')}
-        if(answer3.classList.contains('none')){answer3.classList.remove('none')}
-        if(question.classList.contains('none')){question.classList.remove('none')}
+    const validationRecord = (inputName,inputEmail,record)=>{
+        return new Promise((resolve,reject)=>{
+
+            setTimeout(()=>{
+                if(inputName.value && inputEmail.value){
+                    resolve(record.classList.add('none'))
+                }else{reject('Resgistrate para poder Jugar')}
+            },100)
+        })
     }
-    const renderPlayer = ()=>{
-        $playerName.textContent = $player.value
+    const hideElement = (element)=>{
+        element.classList.add('none')
+    }
+    const cleaningContent = (element)=>{
+        element.textContent = ""
+    }
+    const clarifyElement = (element)=>{
+        element.classList.remove('none')
+    }
+    const animationElement = (element,classAnimation)=>{
+        element.classList.add(classAnimation)
     }
     const evaluation = (objectOptions,idOption,arrayRandom,i)=>{
+
         if(i< arrayRandom.length){
             const idOpciones = arrayRandom[i]
             console.log(`Estoy dentro de evaluation ${idOpciones}`)
@@ -182,88 +203,58 @@ const ComponentOne = ()=>{
             }
             functionEvaluation()
         }
+  
     }
-    const validationRecord = (inputName,inputEmail,record)=>{
-        return new Promise((resolve,reject)=>{
-
-            setTimeout(()=>{
-                if(inputName.value && inputEmail.value){
-                    resolve(record.classList.add('none'))
-                }else{reject('Resgistrate para poder Jugar')}
-            },100)
-        })
+    const chronometro = (countDown,element)=>{
+        element.textContent = countDown
+        let times = countDown-1
+        let cronos = setInterval(() => {
+            let contador = times--
+            element.textContent = contador
+        }, 1000)
+        setTimeout(() => {
+            element.textContent = ""
+            clearInterval(cronos)
+            if($question.value != "¡Felicitaciones terminaste! 🎉"){
+                $question.textContent = "¡Se terminó su tiempo! 🎉"
+            }
+            while($options.hasChildNodes()){
+            $options.removeChild($options.firstChild)
+            }
+        }, `${countDown}000`)
     }
-    const disableOptions = (option1,option2)=>{
-        option1.classList.add('none')
-        option2.classList.add('none')
+    const next = ()=>{
+        if(i<randomNumberArray.length){
+            i = i+1
+            renderQuestions(randomNumberArray,questions,i)
+            renderAnswer(randomNumberArray,options,i)
+        }
+        if(i>=randomNumberArray.length){
+            hideElement($time)
+            gameOver()
+        }
     }
-    const cleaningContent = (element)=>{
-        element.textContent = ""
-    }
-    const hideElement = (element)=>{
-        element.classList.add('none')
-    }
-    const clarifyElement = (element)=>{
-        element.classList.remove('none')
+    const newQuestion = (opcion1,opcion2,opcion3,question,resop)=>{
+        setTimeout(() => {
+            cleaningContent(resop)
+            enableContainers(opcion1,opcion2,opcion3,question)
+            next()
+        }, 1000);
     }
     const gameOver = ()=>{
-        $question.textContent = "¡Terminaste! 🎉"
+
+        $time.textContent = "Felicitaciones"
+        $question.textContent = "¡Felicitaciones terminaste! 🎉"
         while($options.hasChildNodes()){
             $options.removeChild($options.firstChild)
         }
     }
-    const next = (idInputClick)=>{
-        setTimeout(() => {
-            if(i<randomNumberArray.length){
-                i = i+1
-                d.getElementById(idInputClick).textContent=""
-                activeLoader()
-                setTimeout(() => {
-                    inactiveLoader()
-                    enableContainers($option1,$option2,$option3,$question)
-                    renderQuestions(randomNumberArray,questions,i)
-                    renderAnswer(randomNumberArray,options,i)
-                }, 500)
-            }
-            if(i>=randomNumberArray.length){
-                d.getElementById(idInputClick).textContent=""
-                activeLoader()
-                gameOver()
-                inactiveLoader()
-            }
 
-        }, 1000);
-    }
-    const animationElement = (element,classAnimation)=>{
-        element.classList.add(classAnimation)
-    }
-    const autoNext = ()=>{
-        
-        setInterval(()=>{
-
-            if(i<randomNumberArray.length){
-                i = i+1
-                activeLoader()
-                setTimeout(() => {
-                    inactiveLoader()
-                    enableContainers($option1,$option2,$option3,$question)
-                    renderQuestions(randomNumberArray,questions,i)
-                    renderAnswer(randomNumberArray,options,i)
-                    crono()
-                }, 500)
-            }
-            if(i>=randomNumberArray.length){
-                activeLoader()
-                gameOver()
-                inactiveLoader()
-            }
-        },5000)
-    }
     // Primer event
     d.addEventListener('click', async (e)=>{
+
         e.preventDefault()
         if(e.target === $btnPlay){
-
             clarifyElement($btnOver)
             hideElement($btnPlay)
             clarifyElement($recordPlayer)
@@ -277,30 +268,38 @@ const ComponentOne = ()=>{
             await getQuestions("http://127.0.0.1:5500/json/questions.json",questions)
             await getOptions("http://127.0.0.1:5500/json/answers.json",options)
             await arrayRandomPromise(randomNumberArray,5,4)
-            inactiveLoader()
+            inactiveLoader(0)
+            renderPlayer()
             enableContainers($option1,$option2,$option3,$question)
             renderQuestions(randomNumberArray,questions,i)
             renderAnswer(randomNumberArray,options,i)
-            renderPlayer()
-            autoNext()
-            loaderState = 'Load'
+            chronometro(25,$time)
+             
+            $option1.addEventListener('click',()=>{
+
+                hideElement($option2)
+                hideElement($option3)
+                evaluation(options,'op1',randomNumberArray,i)
+                newQuestion($option1,$option2,$option3,$question,$resOp1)
+            })
+
+            $option2.addEventListener('click',()=>{
+                
+                hideElement($option1)
+                hideElement($option3)
+                evaluation(options,'op2',randomNumberArray,i)
+                newQuestion($option1,$option2,$option3,$question,$resOp2)
+            })
+
+            $option3.addEventListener('click',()=>{
+                hideElement($option1)
+                hideElement($option2)
+                evaluation(options,'op3',randomNumberArray,i)
+                newQuestion($option1,$option2,$option3,$question,$resOp3)
+            })
         }
-        if(e.target === $option1||e.target === $op1){
-            disableOptions($option2,$option3)
-            evaluation(options,"op1",randomNumberArray,i)
-            next('resop1')
-        }
-        if(e.target === $option2||e.target === $op2){
-            disableOptions($option1,$option3)
-            evaluation(options,"op2",randomNumberArray,i)
-            next('resop2')
-        }
-        if(e.target === $option3||e.target === $op3){ 
-            disableOptions($option2,$option1)
-            evaluation(options,"op3",randomNumberArray,i)
-            next('resop3')
-        }
-        if(e.target ===$btnOver){
+     
+        if(e.target === $btnOver){
             location.reload()
         }
     })   

@@ -150,9 +150,14 @@ p{font-size: var(--fsNormal);}
     border-radius: 7px;
     border: solid 0.7px var(--bgArticle);
     justify-content: space-around;
+    z-index: 5;
+    background: transparent;
 }
 .options li:hover{
     background: var(--bgArticle);
+}
+#op1,#op2,#op3,#resop1,#resop2,#resop3{
+    z-index: 4;
 }
 /* Style-Loading */
 .lds-dual-ring {
