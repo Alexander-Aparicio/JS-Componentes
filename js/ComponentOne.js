@@ -203,11 +203,13 @@ const ComponentOne = ()=>{
         setTimeout(() => {
             element.textContent = ""
             clearInterval(cronos)
-            if($question.value != "¡Felicitaciones terminaste! 🎉"){
-                $question.textContent = "¡Se terminó su tiempo! 🎉"
-            }
+
             while($options.hasChildNodes()){
-            $options.removeChild($options.firstChild)
+
+                $options.removeChild($options.firstChild)
+                if($question.value === "¡Felicitaciones terminaste! 🎉"){
+                    $question.textContent = "¡Felicitaciones terminaste! 🎉"
+                }else{$question.textContent = "¡Se terminó su tiempo! 🎉"}
             }
         }, `${countDown}000`)
     }
