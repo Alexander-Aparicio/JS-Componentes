@@ -166,18 +166,6 @@ const ComponentOne = ()=>{
             },100)
         })
     }
-    const hideElement = (element)=>{
-        element.classList.add('none')
-    }
-    const cleaningContent = (element)=>{
-        element.textContent = ""
-    }
-    const clarifyElement = (element)=>{
-        element.classList.remove('none')
-    }
-    const animationElement = (element,classAnimation)=>{
-        element.classList.add(classAnimation)
-    }
     const evaluation = (objectOptions,idOption,arrayRandom,i)=>{
 
         if(i< arrayRandom.length){
@@ -230,13 +218,13 @@ const ComponentOne = ()=>{
             renderAnswer(randomNumberArray,options,i)
         }
         if(i>=randomNumberArray.length){
-            hideElement($time)
+            $time.classList.add('none')
             gameOver()
         }
     }
     const newQuestion = (opcion1,opcion2,opcion3,question,resop)=>{
         setTimeout(() => {
-            cleaningContent(resop)
+            resop.textContent = ""
             enableContainers(opcion1,opcion2,opcion3,question)
             next()
         }, 1000);
@@ -255,10 +243,10 @@ const ComponentOne = ()=>{
 
         e.preventDefault()
         if(e.target === $btnPlay){
-            clarifyElement($btnOver)
-            hideElement($btnPlay)
-            clarifyElement($recordPlayer)
-            animationElement($record,'transition')
+            $btnOver.classList.remove('none')
+            $btnPlay.classList.add('none')
+            $recordPlayer.classList.remove('none')
+            $record.classList.add('transition')
         }
 
         if(e.target === $btnRecord){
@@ -276,24 +264,25 @@ const ComponentOne = ()=>{
             chronometro(25,$time)
              
             $option1.addEventListener('click',()=>{
-
-                hideElement($option2)
-                hideElement($option3)
+ 
+                $option2.classList.add('none')
+                $option3.classList.add('none')
                 evaluation(options,'op1',randomNumberArray,i)
                 newQuestion($option1,$option2,$option3,$question,$resOp1)
             })
 
             $option2.addEventListener('click',()=>{
                 
-                hideElement($option1)
-                hideElement($option3)
+                $option1.classList.add('none')
+                $option3.classList.add('none')
                 evaluation(options,'op2',randomNumberArray,i)
                 newQuestion($option1,$option2,$option3,$question,$resOp2)
             })
 
             $option3.addEventListener('click',()=>{
-                hideElement($option1)
-                hideElement($option2)
+    
+                $option1.classList.add('none')
+                $option2.classList.add('none')
                 evaluation(options,'op3',randomNumberArray,i)
                 newQuestion($option1,$option2,$option3,$question,$resOp3)
             })
